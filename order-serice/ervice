@@ -1,0 +1,12 @@
+ Dockerfile                                         |   5 [32m+[m
+ pom.xml                                            |  35 [32m+++++++[m
+ .../order_service/OrderSericeApplication.java      |   2 [32m+[m
+ .../order_service/client/ProductClient.java        |  12 [32m+[m[31m--[m
+ .../example/order_service/client/UserClient.java   |   8 [32m+[m[31m-[m
+ .../order_service/config/KafkaProducerConfig.java  | 105 [32m+++++++++++++++++++++[m
+ .../order_service/event/OrderCreatedEvent.java     |  14 [32m+++[m
+ .../order_service/kafka/OrderEventConsumer.java    |  24 [32m+++++[m
+ .../order_service/kafka/OrderEventProducer.java    |  25 [32m+++++[m
+ .../order_service/service/OrderService.java        |  14 [32m+++[m
+ src/main/resources/application.properties          |  13 [32m++[m[31m-[m
+ 11 files changed, 243 insertions(+), 14 deletions(-)
