@@ -1,9 +1,6 @@
 package com.example.productservice.service;
 
-import com.example.productservice.dto.CreateProductRequest;
-import com.example.productservice.dto.ProductResponse;
-import com.example.productservice.dto.UpdateProductRequest;
-import com.example.productservice.dto.UpdateStockRequest;
+import com.example.productservice.dto.*;
 import com.example.productservice.entity.Product;
 import com.example.productservice.repository.ProductRepository;
 import org.springframework.security.core.parameters.P;
@@ -115,5 +112,10 @@ public class ProductService {
         response.setStock(savedProduct.getStock());
 
         return response;
+    }
+
+    public List<ProductResponse> searchProducts(ProductSearchRequest request){
+        return productRepository.searchProducts(request.getKeyword(),request.getMinPrice(),request.getMaxPrice()).stream().map
+                (product -> new ProductResponse(product.getId(),product.getName(),product.getDescription(),product.getPrice(), product.getStock())).toList();
     }
 }

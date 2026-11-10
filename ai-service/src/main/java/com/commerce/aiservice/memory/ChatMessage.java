@@ -14,12 +14,21 @@ public class ChatMessage {
     @Lob
     @Column(columnDefinition = "LONGTEXT")
     private String content;
+    private String userId;
     protected ChatMessage() {
     }
-    public ChatMessage(String conversationId, String role, String content) {
+    public ChatMessage(String userId,String conversationId, String role, String content) {
         this.conversationId = conversationId;
+        this.userId=userId;
         this.role = role;
         this.content = content;
+    }
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getConversationId() {
+        return conversationId;
     }
     public String getRole() {
         return role;

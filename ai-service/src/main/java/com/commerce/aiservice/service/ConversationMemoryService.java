@@ -12,8 +12,8 @@ import java.util.List;
 public class ConversationMemoryService {
     private final ChatMessageRepository chatMessageRepository;
 
-    public List<ChatMessage> getMessages(String conversationId){
-        return chatMessageRepository.findByConversationId(conversationId);
+    public List<ChatMessage> getMessages(String userId,String conversationId){
+        return chatMessageRepository.findByUserIdAndConversationId(userId, conversationId);
     }
     public void addMessage(ChatMessage message){
         chatMessageRepository.save(message);

@@ -1,9 +1,6 @@
 package com.example.productservice.controller;
 
-import com.example.productservice.dto.CreateProductRequest;
-import com.example.productservice.dto.ProductResponse;
-import com.example.productservice.dto.UpdateProductRequest;
-import com.example.productservice.dto.UpdateStockRequest;
+import com.example.productservice.dto.*;
 import com.example.productservice.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +18,7 @@ public class ProductController {
     public ProductResponse createProduct(@Valid @RequestBody CreateProductRequest request){
         return productService.createProduct(request);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/{id:\\d+}")
     public ProductResponse getProductById( @PathVariable Long id){
         return productService.getProductById(id);
     }
@@ -44,6 +41,11 @@ public class ProductController {
             @Valid @RequestBody UpdateStockRequest request) {
 
         return productService.updateStock(id, request);
+    }
+
+    @GetMapping("/search")
+    public List<ProductResponse> searchProducts(@ModelAttribute ProductSearchRequest request){
+        return productService.searchProducts(request);
     }
 
 }

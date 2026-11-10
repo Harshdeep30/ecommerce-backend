@@ -8,14 +8,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.security.core.Authentication;
 @RestController
 @RequiredArgsConstructor
 public class ChatController {
     private final ChatService chatService;
     @PostMapping("/ai/chat")
-    public ChatResponse chat(@RequestBody ChatRequest request){
-        return chatService.chat(request);
+    public ChatResponse chat(@RequestBody ChatRequest request,Authentication authentication){
+        String userEmail=authentication.getName();
+        return chatService.chat(request,userEmail);
 
     }
 }
