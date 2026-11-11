@@ -16,7 +16,7 @@ public class ProductSearchTool {
 
     public ProductSearchTool(RestClient.Builder builder) {
         this.restClient = builder
-                .baseUrl("http://localhost:8081")
+                .baseUrl("http://product-service:8080")
                 .build();
     }
 
